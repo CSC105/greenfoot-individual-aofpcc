@@ -19,7 +19,7 @@ public class Flamingo extends Actor
     
     private boolean superJump;
     private long lastTime;
-    
+    private GreenfootSound soundJump = new GreenfootSound("jump.mp3");
     public Flamingo(int sizeX, int sizeY){
       animWalking = new Animation( "Flamingo", 36, sizeX, sizeY );
       jumping = new GreenfootImage( "Flamingo1.png");
@@ -57,9 +57,12 @@ public class Flamingo extends Actor
           if(!superJump && onGround){
               isWalking = false;
               jump();
+              //soundJump.play();
+              Greenfoot.playSound("jump.mp3");
               superJump = true;
               lastTime = System.nanoTime();
-          }else if( superJump ){
+          }
+          else if( superJump ){
             jump();
             superJump = false;
             lastTime = System.nanoTime();
